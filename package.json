@@ -1,0 +1,26 @@
+{
+    "name": "pineapple-tools",
+    "displayName": "Pineapple-Tools",
+    "description": "Syntax highlighting for Pineapple.",
+    "version": "0.0.1",
+    "publisher": "wongjiahau",
+    "engines": {
+        "vscode": "^1.23.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "pineapple",
+            "aliases": ["Pineapple", "pineapple"],
+            "extensions": [".pine"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "pineapple",
+            "scopeName": "source.pine",
+            "path": "./syntaxes/pineapple.tmLanguage.json"
+        }]
+    }
+}
