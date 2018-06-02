@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Pineapple",
+	"name": "pine",
 	"patterns": [
 		{
 			"include": "#keywords"
@@ -16,22 +16,28 @@
 		},
 		{
 			"include": "#functions"
+		},
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#comments"
 		}
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [{
-				"name": "keyword.control.pineapple",
-				"match": "\\b(if|elif|else|for|in|let|type|function)\\b"
+				"name": "keyword.control.pine",
+				"match": "\\b(if|elif|else|is|isnt|and|or|loop|break|for|in|let|type|function|mutable)\\b"
 			}]
 		},
 		"strings": {
-			"name": "string.quoted.double.pineapple",
+			"name": "string.quoted.double.pine",
 			"begin": "`",
 			"end": "`",
 			"patterns": [
 				{
-					"name": "constant.character.escape.pineapple",
+					"name": "constant.character.escape.pine",
 					"match": "\\\\."
 				}
 			]
@@ -39,7 +45,7 @@
 		"types": {
 			"patterns": [
 				{
-					"name": "entity.name.type",
+					"name": "entity.name.type.pine",
 					"match": "\\b[A-Z][a-zA-Z0-9]*\\b"
 				}
 			]
@@ -47,16 +53,40 @@
 		"numbers": {
 			"patterns": [
 				{
-					"name": "constant.numeric",
+					"name": "constant.numeric.pine",
 					"match": "\\b\\d+([.]\\d+)?(e[+-]?\\d+)?\\b"
 				}
 			]
 		},
-		"numbers": {
+		"functions": {
 			"patterns": [
 				{
-					"name": "constant.numeric",
-					"match": "\\b\\d+([.]\\d+)?(e[+-]?\\d+)?\\b"
+					"name": "entity.name.function.pine",
+					"match": "[:][a-z][a-zA-Z0-9]*[:]"
+				},
+				{
+					"name": "entity.name.function.pine",
+					"match": "\\b[a-z][a-zA-Z0-9]*[:]"
+				},
+				{
+					"name": "entity.name.function.pine",
+					"match": "[:][a-z][a-zA-Z0-9]*\\b"
+				}
+			]
+		},
+		"variables": {
+			"patterns": [
+				{
+					"name": "variable.pine",
+					"match": "[a-z][a-zA-Z0-9]*"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.pine",
+					"match": "//.*"
 				}
 			]
 		}
