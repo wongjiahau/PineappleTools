@@ -2,6 +2,9 @@
 
 This is the README for your extension "pineapple-tools". After writing up a brief description, we recommend including the following sections.
 
+## Syntax Highlighting
+![image](https://user-images.githubusercontent.com/23183656/40870487-1dcf81f6-6663-11e8-937c-33cce5aaedec.png)
+
 ## Features
 
 Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
