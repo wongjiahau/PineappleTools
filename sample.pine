@@ -1,30 +1,191 @@
-// This is a comment 
-let x @ Int = 5
+def io main: 
+    // Variable assignment
+    let x = 5 
+    let y Int = 6
+    let z mutable <- 7 // z is mutable now
 
-type Fruit 
-    .name    @ String
-    .age     @ Int
-    .sibling @ Fruit?
+    // for loop
+    for i in 1 to: 10
+        io print: 'Hello world' // calling io function
 
-let myFruit @ Fruit = #
-    .name <- `Pineapple`
-    .age  = 123.456e-10
-    .sibling = nil
+    // if else
+    if x >= 5 and y < 7
+        io print: 'yes'
+    elif z == 7
+        io print: 'oh no'
+    else
+        io print: 'ok'
     
-if score is > 70 and is <= 80
-    print: `Good job!`
+    let now  = io currentTime:
+    io print: 'The current time is #(now)'
 
-if myFruit or hisFruit isnt :sweet
-    print: `Someone's fruit is not sweet`
+// Prefix Function definition
+def quicksort: (this T[]) -> T[] where T implement Comparable
+    let pivot = this[1]
+    let left right = partition: this by: ($1 > pivot)
+    return quicksort: left ++ [pivot] ++ quicksort: right
 
-if john is :nice and mary is :sweet
-    print: `Wow`
+// Infix function definition
+def this T[] add: that T[] -> T[] where T implement Addable
+    makesure this.length == that.length
+    let result <- []
+    for i in 1 to: this.length
+        result <- result append: (this.[i] + that.[i])
+    return result
 
-let numbers = split: `3,4,5,6` :by: `,`
+// Suffix function definition
+def this String isPalindrome: -> Boolean
+    if this.length <= 1
+        return true
+    elif this.[1] == this.[-1]
+        return this.[2..-2] isPalindrome:
+    else
+        return false
 
-function 
-split: target@String :by: separator@String >> String[]
-    throw `Not implemented yet`
+expect(x).to.equals(y)
+
+expect: x toEquals: y
 
 
-        
+
+// Mixfix function definition
+def take: this T->Boolean from: that T[] -> T[] 
+    let result <- []
+    for element in that 
+        if invoke: this on: element
+            result <- result append: element
+    return result
+
+take {isEven:} from [1 2 3 4 5 6 7 8] // 
+
+// Template definition
+template BinaryTree<T>
+    .value T
+    .left  BinaryTree<T>? mutable
+    .right BinaryTree<T>? mutable
+
+// Trait definition
+trait Equatable<T>
+    def this T (==) that T -> Boolean
+        pass
+    
+    def this T (!=) that T -> Boolean
+        return not this == that 
+    
+// Extended trait
+trait Comparable<T> extends Equatable<T>
+    def this T (>) that T -> Boolean
+        pass
+    
+    def this T (>=) that T -> Boolean
+        return this > that or this == that
+    
+    def this T (<) that T  -> Boolean
+        return not this > that and not this == that
+    
+    def this T (<=) that T -> Boolean
+        return this < that or this == that
+
+template Fruit 
+    .name    String 
+    .price   Double
+    .sibling Fruit? = nil
+
+// Trait implementation
+implement Comparable<Fruit>
+    def this Fruit (==) that Fruit -> Boolean
+        return this.name == that.name
+
+    def this Fruit (>) that Fruit -> Boolean
+        return this.price > that.price
+
+
+def io demo:
+    // free object
+    let freeObject = 
+        .'johnny lambert' = 123
+        .'adam warlock'   = 456
+
+    io print: freeObject.['adam warlock']
+
+    // singleline object
+    let herFruit Fruit = {.name= 'Pineapple' .price= 99 .sibling= {.name= 'Durian' .price= 123}}
+
+    // multiline object
+    let myFruit Fruit = 
+        .name    = 'Pineapple'
+        .price   = 123.456e-10
+        .sibling = 
+            .name  = 'Durian'
+            .price = 99
+    
+    // singleline list
+    let xs = [1 2 3 4 5]
+    
+    // multiline list
+    let animals = 
+        o 'Leopard'
+        o 'Chicken'
+        o 'Duck'
+
+    io print: animals.[1] // 'Leopard'
+    io print: animals.[2..] // ['Chicken' 'Duck']
+
+def newBinaryTree: value T -> BinaryTree<T>
+    return 
+        .value = value
+        .left  = nil
+        .right = nil
+
+def insert: this T into: that BinaryTree<T>? -> BinaryTree<T>
+    if that == nil
+        return newBinaryTree: value
+
+    if this < that.value
+        return 
+            .value = that.value
+            .left  = insert: this into: that.left
+            .right = that.right
+
+    if this >= that.value
+        return 
+            .value = that.value
+            .left  = that.left
+            .right = insert: this into: that.right
+
+
+def this T[] toBinaryTree: -> BinaryTree<T>
+    let result <- newBinaryTree: this.[1]
+    for i in 2 to: this.length
+        result <- insert: this.[i] into: result
+    return result
+
+
+def flatten: this BinaryTree<T>? -> T[]
+    if this == nil 
+        return []
+    else
+        let left  = this.left  ?? []
+        let right = this.right ?? []
+        return flatten: left ++ [this.value] ++ flatten: right
+
+
+def this BinaryTree<T>? includes: that T -> Boolean
+    if this == nil        return false
+    if that == this.value return true
+    if that <  this.value return this.left  inlcudes: that
+    if that >  this.value return this.right inlcudes: that
+
+def Person:
+    def equals(person)
+    
+
+x.equals(y)
+
+
+replace(old,new,input)
+
+input.replace(old,new)
+input.replace(new,old)
+
+

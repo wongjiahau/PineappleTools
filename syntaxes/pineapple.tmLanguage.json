@@ -3,7 +3,10 @@
 	"name": "pine",
 	"patterns": [
 		{
-			"include": "#keywords"
+			"include": "#controlkeywords"
+		},
+		{
+			"include": "#operatorkeywords"
 		},
 		{
 			"include": "#strings"
@@ -22,19 +25,31 @@
 		},
 		{
 			"include": "#comments"
+		},
+		{
+			"include": "#enum"
+		},
+		{
+			"include": "#brackets"
 		}
 	],
 	"repository": {
-		"keywords": {
+		"controlkeywords": {
+			"patterns": [{
+				"name": "storage.type",
+				"match": "\\b(return|as|and|or|not|throw|import|use|private|where|if|elif|else|break|let|mutable)\\b"
+			}]
+		},
+		"operatorkeywords": {
 			"patterns": [{
 				"name": "keyword.control.pine",
-				"match": "\\b(if|elif|else|is|isnt|and|or|loop|break|for|in|let|type|function|mutable)\\b"
+				"match": "\\b(def)\\b"
 			}]
 		},
 		"strings": {
 			"name": "string.quoted.double.pine",
-			"begin": "`",
-			"end": "`",
+			"begin": "\"",
+			"end": "\"",
 			"patterns": [
 				{
 					"name": "constant.character.escape.pine",
@@ -50,6 +65,14 @@
 				}
 			]
 		},
+		"brackets": {
+			"patterns": [
+				{
+					"name": "punctuation.definition",
+					"match": "([(]|[)])"
+				}
+			]
+		},
 		"numbers": {
 			"patterns": [
 				{
@@ -62,15 +85,7 @@
 			"patterns": [
 				{
 					"name": "entity.name.function.pine",
-					"match": "[:][a-z][a-zA-Z0-9]*[:]"
-				},
-				{
-					"name": "entity.name.function.pine",
-					"match": "\\b[a-z][a-zA-Z0-9]*[:]"
-				},
-				{
-					"name": "entity.name.function.pine",
-					"match": "[:][a-z][a-zA-Z0-9]*\\b"
+					"match": "[.]([a-z][a-zA-Z0-9]*)?"
 				}
 			]
 		},
@@ -78,7 +93,7 @@
 			"patterns": [
 				{
 					"name": "variable.pine",
-					"match": "[a-z][a-zA-Z0-9]*"
+					"match": "[a-zA-Z0-9]+"
 				}
 			]
 		},
@@ -87,6 +102,14 @@
 				{
 					"name": "comment.pine",
 					"match": "//.*"
+			}
+			]
+		},
+		"enum": {
+			"patterns": [
+				{
+					"name": "constant.numeric",
+					"match": "['][a-zA-Z0-9]+"
 				}
 			]
 		}

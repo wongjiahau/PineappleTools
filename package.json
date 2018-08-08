@@ -4,6 +4,7 @@
     "description": "Syntax highlighting for Pineapple.",
     "version": "0.0.1",
     "publisher": "wongjiahau",
+    "repository": "https://github.com/wongjiahau/PineappleTools",
     "engines": {
         "vscode": "^1.23.0"
     },
