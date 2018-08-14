@@ -37,7 +37,10 @@
 		"controlkeywords": {
 			"patterns": [{
 				"name": "storage.type",
-				"match": "\\b(return|as|and|or|not|throw|import|use|private|where|if|elif|else|break|let|mutable)\\b"
+				"match": "\\b(for|in|return|as|and|or|not|throw|import|use|private|where|if|elif|else|break|let|mutable)\\b"
+			}, {
+				"name": "comment",
+				"match": "<[^\\s]+?>"
 			}]
 		},
 		"operatorkeywords": {
@@ -109,7 +112,7 @@
 			"patterns": [
 				{
 					"name": "constant.numeric",
-					"match": "['][a-zA-Z0-9]+"
+					"match": "[`][a-zA-Z0-9]+"
 				}
 			]
 		}
