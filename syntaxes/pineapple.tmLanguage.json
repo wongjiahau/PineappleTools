@@ -24,6 +24,9 @@
 			"include": "#variables"
 		},
 		{
+			"include": "#members"
+		},
+		{
 			"include": "#comments"
 		},
 		{
@@ -37,7 +40,7 @@
 		"controlkeywords": {
 			"patterns": [{
 				"name": "storage.type",
-				"match": "\\b(for|in|return|as|and|or|not|throw|import|use|private|where|if|elif|else|break|let|mutable)\\b"
+				"match": "\\b(pass|for|in|return|as|and|or|not|throw|import|use|private|where|if|elif|else|break|let|mutable)\\b"
 			}, {
 				"name": "comment",
 				"match": "<[^\\s]+?>"
@@ -100,6 +103,14 @@
 				}
 			]
 		},
+		"members": {
+			"patterns": [
+				{
+					"name": "support.type.property-name",
+					"match": "[:][a-zA-Z0-9]+"
+				}
+			]
+		},
 		"comments": {
 			"patterns": [
 				{
@@ -112,7 +123,7 @@
 			"patterns": [
 				{
 					"name": "constant.numeric",
-					"match": "[`][a-zA-Z0-9]+"
+					"match": "[#][a-zA-Z0-9]+"
 				}
 			]
 		}
