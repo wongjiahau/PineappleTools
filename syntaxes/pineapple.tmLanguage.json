@@ -111,7 +111,7 @@
 			"patterns": [
 				{
 					"name": "support.type.property-name",
-					"match": "['][a-zA-Z0-9]+"
+					"match": "[.][a-zA-Z0-9]+"
 				}
 			]
 		},
