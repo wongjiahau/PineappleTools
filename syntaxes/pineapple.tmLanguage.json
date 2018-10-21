@@ -40,7 +40,7 @@
 		"controlkeywords": {
 			"patterns": [{
 				"name": "storage.type",
-				"match": "\\b(pass|for|in|return|as|and|or|not|throw|import|use|private|where|if|elif|else|break|let|mutable)\\b"
+				"match": "\\b(thing|group|is|try|catch|pass|for|in|return|as|ensure|throw|import|use|private|where|if|elif|else|while|example|break|let|mutable)\\b"
 			}, {
 				"name": "comment",
 				"match": "<[^\\s]+?>"
@@ -49,7 +49,7 @@
 		"operatorkeywords": {
 			"patterns": [{
 				"name": "keyword.control.pine",
-				"match": "\\b(def)\\b"
+				"match": "\\b(def|test)\\b"
 			}]
 		},
 		"strings": {
@@ -67,7 +67,7 @@
 			"patterns": [
 				{
 					"name": "entity.name.type.pine",
-					"match": "\\b[A-Z][a-zA-Z0-9]*\\b"
+					"match": "[:][a-z][a-zA-Z0-9]*\\b"
 				}
 			]
 		},
@@ -91,7 +91,11 @@
 			"patterns": [
 				{
 					"name": "entity.name.function.pine",
-					"match": "[.]([a-z][a-zA-Z0-9]*)?"
+					"match": "[.]([A-Z][a-zA-Z0-9]*)?"
+				},
+				{
+					"name": "entity.name.function.pine",
+					"match": "[A-Z][a-zA-Z0-9]*"
 				}
 			]
 		},
@@ -107,7 +111,7 @@
 			"patterns": [
 				{
 					"name": "support.type.property-name",
-					"match": "[:][a-zA-Z0-9]+"
+					"match": "['][a-zA-Z0-9]+"
 				}
 			]
 		},
